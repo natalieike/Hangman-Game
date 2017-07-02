@@ -1,0 +1,37 @@
+body {
+		background-image: url("../images/shark-background_1920.jpg"); 
+}
+
+.topRow {
+	margin-top: 2%;
+}
+
+.headText {
+	font-family: 'Lobster', cursive;
+	font-size: 38px;
+	color: #3399ff;
+}
+
+/* Styling for Tracking Chances */
+.headChance {
+	font-family: 'Lobster', cursive;
+	font-size: 32px;
+	color: #3399ff;
+	background-color: #ccffff;
+	padding: 10px;
+	border: 3px solid #004d4d;
+}
+
+.bodyText {
+  font-family: 'Arimo', sans-serif;
+	color: #004d4d;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bolder;
+	background-color: #ccffff;
+	margin: 5%;
+}
+
+hr {
+	border: 2px solid #004d4d; 
+}
