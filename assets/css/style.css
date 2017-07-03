@@ -29,9 +29,19 @@ body {
 	font-size: 30px;
 	font-weight: bolder;
 	background-color: #ccffff;
-	margin: 5%;
+	margin: 1% 5%;
 }
 
 hr {
-	border: 2px solid #004d4d; 
+	border: 1px solid #004d4d; 
+}
+
+.smallerBodyText {
+	font-family: 'Arimo', sans-serif;
+	color: #004d4d;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #ccffff;
+	margin: 1% 5%;
+	text-align: left;
 }

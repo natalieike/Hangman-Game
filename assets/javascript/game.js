@@ -28,6 +28,9 @@ function initializeGame(){
 	usedLetters = [];
 console.log(currentWord);
 	document.getElementById("puzzle").innerHTML = currentPuzzle.join("  ");
+	document.getElementById("letters").innerHTML = usedLetters.join(" * ");
+	document.getElementById("wins").innerHTML = "Wins: " + wins;
+	document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesLeft;
 }
 
 
@@ -35,11 +38,9 @@ console.log(currentWord);
 function findInCurrentWord(){
 	var x = 0;
 	var tempFoundLetters = [];
-	console.log("findInCurrentWord");
 	while (x < currentWord.length){
 		var y = currentWord.indexOf(currentGuess, x);
 		tempFoundLetters.push(y);
-		console.log(y);
 		if (y === -1) {
 			x = currentWord.length;
 		}
@@ -49,7 +50,6 @@ function findInCurrentWord(){
 		else {
 			x = y + 1;
 		}
-		console.log(foundLetterIndex);
 	}
 	foundLetterIndex = tempFoundLetters;
 };
@@ -69,15 +69,14 @@ function replaceInCurrentPuzzle(){
 function winOrLose() {
 	if (currentPuzzle.indexOf("_") === -1) {
 		wins++;
-	window.location.replace("win.html");
-/*		document.getElementById("puzzle").innerHTML = currentPuzzle.join("") + "<hr> You Win! <br> Wins: " + wins;	
-		console.log("wins " + wins);
-		resetGame = true; */
+	/* window.location.replace("win.html"); */
+	document.getElementById("puzzle").innerHTML = currentPuzzle.join("") + "<hr> You Win!";	
+		resetGame = true; 
 	}
 	else if (guessesLeft === 0) {
-/*		document.getElementById("puzzle").innerHTML = currentWord.join("") + "<hr> You Lose. <br> Wins: " + wins;	
-		resetGame = true; */
-		window.location.replace("lose.html");
+		document.getElementById("puzzle").innerHTML = currentWord.join("") + "<hr> You Lose.";	
+		resetGame = true;
+		// window.location.replace("lose.html");
 	}
 }
 
@@ -87,26 +86,28 @@ initializeGame();
 //event handler
 document.onkeyup = function(event) {
 	currentGuess = event.key;
-	console.log(currentGuess);
-	if (usedLetters.indexOf(currentGuess) == -1) {
-		findInCurrentWord();
-		if (foundLetterIndex[0] === -1) {
-			var headerIndex = "header" + (12-guessesLeft);
-			document.getElementById(headerIndex).className += " headChance";
-			guessesLeft--;
-		}
-		else {
-			replaceInCurrentPuzzle();
-		}
-		usedLetters.push(currentGuess);
-		console.log("guesses left" + guessesLeft);
+	if (event.keyCode == 13) {
+		initializeGame();
 	}
 	else {
-		alert("You've already used that letter");
+		if (usedLetters.indexOf(currentGuess) == -1) {
+			findInCurrentWord();
+			if (foundLetterIndex[0] === -1) {
+				var headerIndex = "header" + (12-guessesLeft);
+				document.getElementById(headerIndex).className += " headChance";
+				guessesLeft--;
+				document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesLeft;
+			}
+			else {
+				replaceInCurrentPuzzle();
+			}
+			usedLetters.push(currentGuess);
+			document.getElementById("letters").innerHTML = usedLetters.join(" * ");
+		}
+		else {
+			alert("You've already used that letter");
+		}
+		winOrLose();
 	}
-	winOrLose();
-	if (resetGame) {
-		initializeGame();
-	} 
 };
 
