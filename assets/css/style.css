@@ -2,6 +2,12 @@ body {
 		background-image: url("../images/shark-background_1920.jpg"); 
 }
 
+img {
+	width: 200px;
+	margin: 10px 30px;
+	opacity: 1;
+}
+
 .topRow {
 	margin-top: 2%;
 }
