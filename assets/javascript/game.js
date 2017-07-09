@@ -85,9 +85,14 @@ function gameObject(word, picture) {
 //event handler
 document.onkeyup = function(event) {
 	var currentGuess = event.key; //user input
-	//If the user hits Enter or if the last game is over, new game will initialize
-	if ((event.keyCode == 13) || (currentGame.resetGame === true)) {
-		currentGame = initializeGame();
+	//If the user hits Enter and the last game is over, new game will initialize
+	if (event.keyCode == 13){
+		if (currentGame.resetGame === true) {
+			currentGame = initializeGame();
+		}
+		else{
+			return;
+		}
 	}
 	else {
 		//If the currentGuess hasn't been guessed before, then try to find it in the current word
