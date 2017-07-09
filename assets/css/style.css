@@ -30,6 +30,7 @@ body {
 	font-weight: bolder;
 	background-color: #ccffff;
 	margin: 1% 5%;
+	opacity: .8;
 }
 
 hr {
@@ -44,4 +45,5 @@ hr {
 	background-color: #ccffff;
 	margin: 1% 5%;
 	text-align: left;
+	opacity: .8;
 }
